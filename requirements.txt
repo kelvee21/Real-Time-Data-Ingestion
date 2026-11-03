@@ -1,0 +1,8 @@
+# Lab 2: Spark Structured Streaming -> PostgreSQL
+pyspark>=3.5            # tested with 4.3 on Python 3.13; needs Java 17
+psycopg2-binary>=2.9    # the merge step (staging -> events) after each micro-batch
+python-dotenv>=1.0      # reads connection settings from .env
+matplotlib>=3.8         # only for src/diagram.py (reports/system_architecture.png)
+pytest>=8.0             # unit tests in tests/, no postgres needed
+pyright>=1.1.400        # type check: run `pyright` in this folder
+types-psycopg2>=2.9     # type stubs so psycopg2 connections and cursors are not Unknown
