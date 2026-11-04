@@ -1,0 +1,26 @@
+PostgreSQL connection details: real-time event ingestion lab
+================================================================
+
+Host:      localhost
+Port:      5432
+Database:  ecommerce
+User:      spark_app        (login role created by postgres_setup.sql; may only
+                             SELECT/INSERT on events and SELECT/INSERT/TRUNCATE
+                             on events_staging)
+Password:  not stored in this file. It is chosen when postgres_setup.sql is run
+           (psql -v app_password='...') and kept in .env as PGPASSWORD, which
+           is gitignored. Ask the author for it, or run the setup script with
+           your own password.
+
+Tables:    events          (final, one row per event, PK event_id)
+           events_staging  (landing table for each micro-batch, emptied after the merge)
+
+JDBC URL used by Spark:
+           jdbc:postgresql://localhost:5432/ecommerce
+           driver org.postgresql.Driver (Maven package org.postgresql:postgresql:42.7.4)
+
+psql:
+           psql -h localhost -p 5432 -U spark_app -d ecommerce
+
+The streaming job reads all of these from environment variables
+(PGHOST, PGPORT, PGDATABASE, PGUSER, PGPASSWORD). See .env.example.
