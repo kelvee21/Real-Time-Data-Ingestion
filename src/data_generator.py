@@ -4,7 +4,6 @@
     python -m src.data_generator --rows 500 --every 1 --batches 60
     python -m src.data_generator --bad-rate 0.2           # 20% of rows get a broken field
 
-(`python data_generator.py` does the same, the brief wants that file name.)
 
 each file is written under a temp name starting with "_" and then renamed.
 spark skips files whose names start with "_" or ".", so it never reads a

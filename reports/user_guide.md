@@ -51,14 +51,14 @@ to start, then prints `watching data/incoming every 5 seconds`.
 
 ```powershell
 $env:HADOOP_HOME = "C:\Users\User\hadoop"      # only if not set system-wide
-python spark_streaming_to_postgres.py
+python -m src.spark_streaming_to_postgres
 ```
 
 **Terminal 2: the generator.**
 
 ```powershell
-python data_generator.py                          # 100 rows every 2 s, until Ctrl+C
-python data_generator.py --rows 100 --every 2 --batches 20 --bad-rate 0.2
+python -m src.data_generator                          # 100 rows every 2 s, until Ctrl+C
+python -m src.data_generator --rows 100 --every 2 --batches 20 --bad-rate 0.2
 ```
 
 | Generator flag | Default | Meaning |
@@ -77,7 +77,7 @@ batch 3: 85 rows, 85 inserted, 1.3 s
 ```
 
 Stop either program with **Ctrl+C**. To stop the job automatically, use
-`python spark_streaming_to_postgres.py --run-seconds 120`.
+`python -m src.spark_streaming_to_postgres --run-seconds 120`.
 
 ## 6. Check the results
 

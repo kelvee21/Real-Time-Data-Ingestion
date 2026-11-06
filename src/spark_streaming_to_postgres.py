@@ -1,10 +1,9 @@
 """Parts 2 and 3 glued together: watch the folder, clean each new file, write to postgres.
 
-    python -m src.main                    # run until ctrl+c
-    python -m src.main --run-seconds 120  # stop by itself (what the test runs used)
-    python -m src.main --once             # take every file waiting now, then stop
+    python -m src.spark_streaming_to_postgres                    # run until ctrl+c
+    python -m src.spark_streaming_to_postgres --run-seconds 120  # stop by itself (what the test runs used)
+    python -m src.spark_streaming_to_postgres --once             # take every file waiting now, then stop
 
-(`python spark_streaming_to_postgres.py` does the same, the brief wants that name.)
 
 settings come from .env through src.config. flow, per micro-batch:
   new csv files -> read as strings -> cast + validate -> drop duplicates

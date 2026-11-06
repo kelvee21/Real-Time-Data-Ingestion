@@ -1,5 +1,5 @@
 {
-  "include": ["src", "tests", "data_generator.py", "spark_streaming_to_postgres.py"],
+  "include": ["src", "tests"],
   "typeCheckingMode": "strict",
   "pythonVersion": "3.13",
   "reportUnknownMemberType": "none",

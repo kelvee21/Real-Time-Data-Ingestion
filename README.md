@@ -8,13 +8,13 @@ row twice. same repo layout as lab 1 (and my pandas tmdb lab): code in
 `src/`, tests in `tests/`, write-ups in `reports/`.
 
 - lab brief: [Real-Time-Data-Ingestion-II.md](Real-Time-Data-Ingestion-II.md)
-- study notes: [study/](study/), open `study/index.html` in a browser
 
 ## run
 
-needs java 17, python 3.10+ and postgres. on windows also winutils.exe with
-HADOOP_HOME set, spark writes its checkpoint through hadoop code (see
-[study/01-setup-postgres-and-spark.md](study/01-setup-postgres-and-spark.md)).
+needs java 17, python 3.10+ and postgres. spark writes its checkpoint through
+hadoop code, so on windows spark also needs `winutils.exe` and `hadoop.dll` (from the
+`hadoop-3.3.6/bin` folder of github.com/cdarlint/winutils) in `%HADOOP_HOME%in`,
+with HADOOP_HOME set and `%HADOOP_HOME%in` on PATH.
 
 ```
 pip install -r requirements.txt
@@ -22,11 +22,11 @@ psql -U postgres -v app_password='choose-one' -f postgres_setup.sql
 copy .env.example .env                 # PGPASSWORD = the same password
 pytest
 pyright
-python spark_streaming_to_postgres.py  # terminal 1, same as python -m src.main
-python data_generator.py               # terminal 2, same as python -m src.data_generator
+python -m src.spark_streaming_to_postgres  # terminal 1
+python -m src.data_generator               # terminal 2
 ```
 
-`python -m src.main --once` takes every file waiting in the folder and stops,
+`python -m src.spark_streaming_to_postgres --once` takes every file waiting in the folder and stops,
 `--run-seconds 120` stops after two minutes (that is how the test runs were
 done). full steps, checks and reset: [reports/user_guide.md](reports/user_guide.md).
 
@@ -41,18 +41,18 @@ delete, so a test row would stay in `events` for good.
 instead of Unknown. it should say 0 errors.
 
 open analysis.ipynb and run it top to bottom. it calls the same functions as
-`src.main`, one step per section, on its own folder (`data/notebook/`). if
+`src.spark_streaming_to_postgres`, one step per section, on its own folder (`data/notebook/`). if
 postgres is down it says so and skips only the write section.
 
 ## deliverables
 
-the brief names nine files. the two scripts it names are kept in the root
-but only call into `src/`, so `python data_generator.py` still works.
+the brief names nine files. its two scripts live in `src/` with the rest of
+the code, under the names the brief gives them.
 
 | deliverable | file |
 |---|---|
-| data generator | [data_generator.py](data_generator.py) -> [src/data_generator.py](src/data_generator.py) |
-| streaming job | [spark_streaming_to_postgres.py](spark_streaming_to_postgres.py) -> [src/main.py](src/main.py) |
+| data generator | [src/data_generator.py](src/data_generator.py) |
+| streaming job | [src/spark_streaming_to_postgres.py](src/spark_streaming_to_postgres.py) |
 | database setup | [postgres_setup.sql](postgres_setup.sql) |
 | connection details | [postgres_connection_details.txt](postgres_connection_details.txt) |
 | project overview | [reports/project_overview.md](reports/project_overview.md) |
@@ -70,18 +70,16 @@ but only call into `src/`, so `python data_generator.py` still works.
 - src/cleaning.py - part 2: raw schema, read_stream, cast_types, drop_bad_rows, drop_duplicates
 - src/postgres_sink.py - part 3: jdbc into events_staging, then one merge into events
 - src/metrics.py - per batch log + spark's progress listener, both to metrics/*.jsonl
-- src/main.py - glue: starts the query, --once / --run-seconds
+- src/spark_streaming_to_postgres.py - parts 2-3: starts the streaming query, --once / --run-seconds
 - src/perf_report.py - latency + throughput summary of one run (`python -m src.perf_report --since ...`)
 - src/diagram.py - draws reports/system_architecture.png
 - tests/ - 42 pytest tests on fake rows, no postgres needed
-- data_generator.py, spark_streaming_to_postgres.py - the file names the brief asks for
 - postgres_setup.sql - database, role, tables, grants (run once with psql)
 - pyrightconfig.json - strict type check settings, vscode / pylance read it too
 - data/ - incoming csv files (not committed, see data/README.md)
 - checkpoint/ - spark's memory of which files are done (not committed)
 - metrics/ - batches.jsonl and progress.jsonl, written by the job
 - reports/ - the write-ups, the diagram, and logs/ with the console output of every test and performance run
-- study/ - my study notes for this lab
 - analysis.ipynb - all steps, runs top to bottom
 
 ## streaming choices

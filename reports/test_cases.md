@@ -34,7 +34,7 @@ must equal *rows generated − rows spoiled*, no more and no less.
 | | |
 |---|---|
 | **Preconditions** | `data/incoming/` empty |
-| **Steps** | `python data_generator.py --rows 100 --every 2 --batches 20 --bad-rate 0.2 --seed 42` |
+| **Steps** | `python -m src.data_generator --rows 100 --every 2 --batches 20 --bad-rate 0.2 --seed 42` |
 | **Expected** | 20 files named `events_*.csv`, each with a header and 100 rows. No `_`-prefixed temporary files left behind. |
 | **Actual** | 20 files, header + 100 rows each. `ls -a data/incoming \| grep -c '^_'` returned 0. |
 | **Result** | Pass |
@@ -43,7 +43,7 @@ must equal *rows generated − rows spoiled*, no more and no less.
 
 | | |
 |---|---|
-| **Preconditions** | Job running (`python spark_streaming_to_postgres.py`), empty checkpoint |
+| **Preconditions** | Job running (`python -m src.spark_streaming_to_postgres`), empty checkpoint |
 | **Steps** | Start the generator from TC-01 while the job runs. Watch the job's console and `metrics/batches.jsonl`. |
 | **Expected** | One micro-batch per file (`MAX_FILES=1`), 20 batches with data. |
 | **Actual** | Batches 0 to 19 each processed one file (75–89 valid rows each). `metrics/batches.jsonl` had 20 lines. |
@@ -120,7 +120,7 @@ the server, without stopping the shared PostgreSQL service.
 
 | | |
 |---|---|
-| **Steps** | 1. Generate 3 files. 2. `PGPORT=5499 python spark_streaming_to_postgres.py`. 3. Then start the job again with the normal settings. |
+| **Steps** | 1. Generate 3 files. 2. `PGPORT=5499 python -m src.spark_streaming_to_postgres`. 3. Then start the job again with the normal settings. |
 | **Expected** | Step 2: the batch fails, the query stops with an error, and the batch is not marked as done. Step 3: the batch is re-run and its rows arrive. |
 | **Actual** | Step 2: `psycopg2.OperationalError: ... port 5499 failed: Connection refused`, exit code 1. The checkpoint had offsets for batch 44 but no commit. Step 3: batch 44 re-ran, then 45 and 46. The total reached the expected 3,428, with no duplicates. |
 | **Result** | Pass |

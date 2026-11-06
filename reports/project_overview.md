@@ -11,8 +11,8 @@ within seconds, cleans it, and writes the rows into a PostgreSQL table.
 
 | Component | File | Role |
 |---|---|---|
-| Event generator | `src/data_generator.py` (run as `python data_generator.py`) | Writes a CSV of fake events every few seconds into `data/incoming/`. A set share of rows is deliberately broken so the cleaning can be tested |
-| Streaming job | `src/cleaning.py`, `src/postgres_sink.py`, `src/main.py` (run as `python spark_streaming_to_postgres.py`) | Watches the folder, reads each new file once, casts and validates every row, drops duplicates, and writes each micro-batch to PostgreSQL |
+| Event generator | `src/data_generator.py` (run as `python -m src.data_generator`) | Writes a CSV of fake events every few seconds into `data/incoming/`. A set share of rows is deliberately broken so the cleaning can be tested |
+| Streaming job | `src/cleaning.py`, `src/postgres_sink.py`, `src/spark_streaming_to_postgres.py` (run as `python -m src.spark_streaming_to_postgres`) | Watches the folder, reads each new file once, casts and validates every row, drops duplicates, and writes each micro-batch to PostgreSQL |
 | Database | `postgres_setup.sql` | Creates the `ecommerce` database, the `spark_app` login, the `events` table and its `events_staging` landing table |
 | Checkpoint | `checkpoint/events/` | Spark's memory: which files each batch read, which batches finished, and the deduplication state. Lets the job restart where it stopped |
 | Metrics | `metrics/*.jsonl`, `src/perf_report.py` | Spark's progress report per batch, a per-batch write log, and a latency summary from the database |
