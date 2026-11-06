@@ -21,3 +21,6 @@ derby.log
 .python-version
 .vscode/
 .qoder/
+
+# study notes are kept locally, not in the repo
+study/
