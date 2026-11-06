@@ -1,0 +1,37 @@
+The system cannot find the path specified.
+Missing Python executable 'C:\Program Files\Python313\python.exe', defaulting to 'C:\Program Files\Python313\Lib\site-packages\pyspark\bin\..' for SPARK_HOME environment variable. Please install Python or specify the correct Python executable in PYSPARK_DRIVER_PYTHON or PYSPARK_PYTHON environment variable to detect SPARK_HOME safely.
+WARNING: Using incubator modules: jdk.incubator.vector
+:: loading settings :: url = jar:file:/C:/Program%20Files/Python313/Lib/site-packages/pyspark/jars/ivy-2.5.3.jar!/org/apache/ivy/core/settings/ivysettings.xml
+Ivy Default Cache set to: C:\Users\User\.ivy2.5.2\cache
+The jars for the packages stored in: C:\Users\User\.ivy2.5.2\jars
+org.postgresql#postgresql added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-c6369131-fd53-484d-84f1-b4a265a9cc82;1.0
+	confs: [default]
+	found org.postgresql#postgresql;42.7.4 in central
+	found org.checkerframework#checker-qual;3.42.0 in central
+:: resolution report :: resolve 94ms :: artifacts dl 7ms
+	:: modules in use:
+	org.checkerframework#checker-qual;3.42.0 from central in [default]
+	org.postgresql#postgresql;42.7.4 from central in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   2   |   0   |   0   |   0   ||   2   |   0   |
+	---------------------------------------------------------------------
+:: retrieving :: org.apache.spark#spark-submit-parent-c6369131-fd53-484d-84f1-b4a265a9cc82
+	confs: [default]
+	0 artifacts copied, 2 already retrieved (0kB/5ms)
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+C:\Program Files\Python313\Lib\site-packages\pyspark\testing\utils.py:127: FutureWarning: PySpark does not yet fully support pandas >= 3.0.0. Some features may not work correctly. It is recommended to use pandas < 3.0.0 for now.
+  require_minimum_pandas_version()
+26/11/04 12:41:28 WARN ResolveWriteToStream: spark.sql.adaptive.enabled is not supported in streaming DataFrames/Datasets and will be disabled.
+query started: id=2887773f-bc1c-4ad3-b679-05876c549e9a
+26/11/04 12:41:29 WARN MicroBatchExecution: Disabling AQE since AQE is not supported in stateful workloads.
+[Stage 0:>                                                          (0 + 1) / 1]26/11/04 12:41:47 WARN HDFSBackedStateStoreProvider StateStoreProviderId[ storeId=StateStoreId[ operatorId=0, partitionId=1, storeName=default ], queryRunId=a5492c6a-cf07-440e-9090-2aa82a7e9cd2 ]: The state for version 28 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+26/11/04 12:41:47 WARN HDFSBackedStateStoreProvider StateStoreProviderId[ storeId=StateStoreId[ operatorId=0, partitionId=0, storeName=default ], queryRunId=a5492c6a-cf07-440e-9090-2aa82a7e9cd2 ]: The state for version 28 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+26/11/04 12:41:47 WARN HDFSBackedStateStoreProvider StateStoreProviderId[ storeId=StateStoreId[ operatorId=0, partitionId=3, storeName=default ], queryRunId=a5492c6a-cf07-440e-9090-2aa82a7e9cd2 ]: The state for version 28 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+26/11/04 12:41:47 WARN HDFSBackedStateStoreProvider StateStoreProviderId[ storeId=StateStoreId[ operatorId=0, partitionId=2, storeName=default ], queryRunId=a5492c6a-cf07-440e-9090-2aa82a7e9cd2 ]: The state for version 28 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 1:>                                                          (0 + 4) / 4]

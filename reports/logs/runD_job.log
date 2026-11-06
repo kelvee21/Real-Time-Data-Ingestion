@@ -1,0 +1,145 @@
+The system cannot find the path specified.
+Missing Python executable 'C:\Program Files\Python313\python.exe', defaulting to 'C:\Program Files\Python313\Lib\site-packages\pyspark\bin\..' for SPARK_HOME environment variable. Please install Python or specify the correct Python executable in PYSPARK_DRIVER_PYTHON or PYSPARK_PYTHON environment variable to detect SPARK_HOME safely.
+WARNING: Using incubator modules: jdk.incubator.vector
+:: loading settings :: url = jar:file:/C:/Program%20Files/Python313/Lib/site-packages/pyspark/jars/ivy-2.5.3.jar!/org/apache/ivy/core/settings/ivysettings.xml
+Ivy Default Cache set to: C:\Users\User\.ivy2.5.2\cache
+The jars for the packages stored in: C:\Users\User\.ivy2.5.2\jars
+org.postgresql#postgresql added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-245ce825-5167-4124-87df-7cbe8a4eb919;1.0
+	confs: [default]
+	found org.postgresql#postgresql;42.7.4 in central
+	found org.checkerframework#checker-qual;3.42.0 in central
+:: resolution report :: resolve 111ms :: artifacts dl 6ms
+	:: modules in use:
+	org.checkerframework#checker-qual;3.42.0 from central in [default]
+	org.postgresql#postgresql;42.7.4 from central in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   2   |   0   |   0   |   0   ||   2   |   0   |
+	---------------------------------------------------------------------
+:: retrieving :: org.apache.spark#spark-submit-parent-245ce825-5167-4124-87df-7cbe8a4eb919
+	confs: [default]
+	0 artifacts copied, 2 already retrieved (0kB/5ms)
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+C:\Program Files\Python313\Lib\site-packages\pyspark\testing\utils.py:127: FutureWarning: PySpark does not yet fully support pandas >= 3.0.0. Some features may not work correctly. It is recommended to use pandas < 3.0.0 for now.
+  require_minimum_pandas_version()
+26/11/04 12:42:12 WARN ResolveWriteToStream: spark.sql.adaptive.enabled is not supported in streaming DataFrames/Datasets and will be disabled.
+query started: id=2887773f-bc1c-4ad3-b679-05876c549e9a
+26/11/04 12:42:13 WARN MicroBatchExecution: Disabling AQE since AQE is not supported in stateful workloads.
+[Stage 0:>                                                          (0 + 1) / 1]26/11/04 12:42:20 WARN HDFSBackedStateStoreProvider StateStoreProviderId[ storeId=StateStoreId[ operatorId=0, partitionId=1, storeName=default ], queryRunId=8fb918f6-da3a-4a3c-bee8-4ac3c32f9abe ]: The state for version 28 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+26/11/04 12:42:20 WARN HDFSBackedStateStoreProvider StateStoreProviderId[ storeId=StateStoreId[ operatorId=0, partitionId=0, storeName=default ], queryRunId=8fb918f6-da3a-4a3c-bee8-4ac3c32f9abe ]: The state for version 28 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+26/11/04 12:42:20 WARN HDFSBackedStateStoreProvider StateStoreProviderId[ storeId=StateStoreId[ operatorId=0, partitionId=3, storeName=default ], queryRunId=8fb918f6-da3a-4a3c-bee8-4ac3c32f9abe ]: The state for version 28 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+26/11/04 12:42:20 WARN HDFSBackedStateStoreProvider StateStoreProviderId[ storeId=StateStoreId[ operatorId=0, partitionId=2, storeName=default ], queryRunId=8fb918f6-da3a-4a3c-bee8-4ac3c32f9abe ]: The state for version 28 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 1:>                                                          (0 + 4) / 4]                                                                                watching data/incoming every 5 seconds, up to 1 file(s) per batch
+batch 28: 78 rows, 78 inserted, 6.2 s
+26/11/04 12:42:23 WARN ProcessingTimeExecutor: Current batch is falling behind. The trigger interval is 5000 milliseconds, but spent 10142 milliseconds
+[Stage 6:>                                                          (0 + 4) / 4]                                                                                batch 29: 79 rows, 79 inserted, 1.5 s
+[Stage 11:>                                                         (0 + 4) / 4]                                                                                batch 30: 74 rows, 74 inserted, 1.3 s
+batch 31: 75 rows, 75 inserted, 1.4 s
+[Stage 21:==============>                                           (1 + 3) / 4]                                                                                batch 32: 81 rows, 81 inserted, 1.3 s
+[Stage 26:==============>                                           (1 + 3) / 4]                                                                                batch 33: 75 rows, 75 inserted, 1.2 s
+[Stage 31:>                                                         (0 + 4) / 4]                                                                                batch 34: 73 rows, 73 inserted, 1.3 s
+batch 35: 83 rows, 83 inserted, 1.2 s
+batch 36: 76 rows, 76 inserted, 1.2 s
+[Stage 46:==============>                                           (1 + 3) / 4]                                                                                batch 37: 79 rows, 79 inserted, 1.2 s
+[Stage 51:>                                                         (0 + 4) / 4]                                                                                batch 38: 75 rows, 75 inserted, 1.2 s
+batch 39: 79 rows, 79 inserted, 1.2 s
+batch 40: 85 rows, 85 inserted, 1.2 s
+[Stage 66:>                                                         (0 + 4) / 4]                                                                                batch 41: 81 rows, 81 inserted, 1.3 s
+[Stage 71:=============================>                            (2 + 2) / 4]                                                                                batch 42: 83 rows, 83 inserted, 1.2 s
+26/11/04 12:43:42 WARN DAGScheduler: Failed to cancel job group 8fb918f6-da3a-4a3c-bee8-4ac3c32f9abe. Cannot find active jobs for it.
+26/11/04 12:43:42 WARN DAGScheduler: Failed to cancel job group 8fb918f6-da3a-4a3c-bee8-4ac3c32f9abe. Cannot find active jobs for it.
+query stopped: exception=None
+26/11/04 12:43:42 WARN SparkEnv: Exception while deleting Spark temp dir: C:\Users\User\AppData\Local\Temp\spark-afa8e4ea-373d-46e1-a125-1b04fe946cfa\userFiles-3cc4ac3c-aa5f-468a-9d7b-c00462c35482
+java.io.IOException: Failed to delete: C:\Users\User\AppData\Local\Temp\spark-afa8e4ea-373d-46e1-a125-1b04fe946cfa\userFiles-3cc4ac3c-aa5f-468a-9d7b-c00462c35482\org.postgresql_postgresql-42.7.4.jar
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:310)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:279)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:293)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:279)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:250)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively(SparkFileUtils.scala:173)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively$(SparkFileUtils.scala:172)
+	at org.apache.spark.util.Utils$.deleteRecursively(Utils.scala:1062)
+	at org.apache.spark.SparkEnv.stop(SparkEnv.scala:299)
+	at org.apache.spark.SparkContext.$anonfun$stop$25(SparkContext.scala:2409)
+	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1314)
+	at org.apache.spark.SparkContext.stop(SparkContext.scala:2409)
+	at org.apache.spark.SparkContext.stop(SparkContext.scala:2311)
+	at org.apache.spark.api.java.JavaSparkContext.stop(JavaSparkContext.scala:552)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:184)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:108)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+26/11/04 12:43:43 ERROR ShutdownHookManager: Exception while deleting Spark temp dir: C:\Users\User\AppData\Local\Temp\spark-afa8e4ea-373d-46e1-a125-1b04fe946cfa\userFiles-3cc4ac3c-aa5f-468a-9d7b-c00462c35482
+java.io.IOException: Failed to delete: C:\Users\User\AppData\Local\Temp\spark-afa8e4ea-373d-46e1-a125-1b04fe946cfa\userFiles-3cc4ac3c-aa5f-468a-9d7b-c00462c35482\org.postgresql_postgresql-42.7.4.jar
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:310)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:279)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:293)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:279)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:250)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively(SparkFileUtils.scala:173)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively$(SparkFileUtils.scala:172)
+	at org.apache.spark.util.Utils$.deleteRecursively(Utils.scala:1062)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4(ShutdownHookManager.scala:70)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4$adapted(ShutdownHookManager.scala:67)
+	at scala.collection.ArrayOps$.foreach$extension(ArrayOps.scala:1324)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$2(ShutdownHookManager.scala:67)
+	at org.apache.spark.util.SparkShutdownHook.run(ShutdownHookManager.scala:231)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$2(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:1963)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$1(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.SparkShutdownHookManager.runAll(ShutdownHookManager.scala:205)
+	at org.apache.spark.util.SparkShutdownHookManager$$anon$2.run(ShutdownHookManager.scala:184)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+26/11/04 12:43:43 ERROR ShutdownHookManager: Exception while deleting Spark temp dir: C:\Users\User\AppData\Local\Temp\spark-afa8e4ea-373d-46e1-a125-1b04fe946cfa
+java.io.IOException: Failed to delete: C:\Users\User\AppData\Local\Temp\spark-afa8e4ea-373d-46e1-a125-1b04fe946cfa\userFiles-3cc4ac3c-aa5f-468a-9d7b-c00462c35482\org.postgresql_postgresql-42.7.4.jar
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:310)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:279)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:293)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:279)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:293)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:279)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:250)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively(SparkFileUtils.scala:173)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively$(SparkFileUtils.scala:172)
+	at org.apache.spark.util.Utils$.deleteRecursively(Utils.scala:1062)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4(ShutdownHookManager.scala:70)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4$adapted(ShutdownHookManager.scala:67)
+	at scala.collection.ArrayOps$.foreach$extension(ArrayOps.scala:1324)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$2(ShutdownHookManager.scala:67)
+	at org.apache.spark.util.SparkShutdownHook.run(ShutdownHookManager.scala:231)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$2(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:1963)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$1(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.SparkShutdownHookManager.runAll(ShutdownHookManager.scala:205)
+	at org.apache.spark.util.SparkShutdownHookManager$$anon$2.run(ShutdownHookManager.scala:184)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+SUCCESS: The process with PID 18332 (child process of PID 9396) has been terminated.
+SUCCESS: The process with PID 9396 (child process of PID 12804) has been terminated.
+SUCCESS: The process with PID 12804 (child process of PID 39616) has been terminated.

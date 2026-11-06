@@ -1,0 +1,339 @@
+The system cannot find the path specified.
+Missing Python executable 'C:\Program Files\Python313\python.exe', defaulting to 'C:\Program Files\Python313\Lib\site-packages\pyspark\bin\..' for SPARK_HOME environment variable. Please install Python or specify the correct Python executable in PYSPARK_DRIVER_PYTHON or PYSPARK_PYTHON environment variable to detect SPARK_HOME safely.
+WARNING: Using incubator modules: jdk.incubator.vector
+:: loading settings :: url = jar:file:/C:/Program%20Files/Python313/Lib/site-packages/pyspark/jars/ivy-2.5.3.jar!/org/apache/ivy/core/settings/ivysettings.xml
+Ivy Default Cache set to: C:\Users\User\.ivy2.5.2\cache
+The jars for the packages stored in: C:\Users\User\.ivy2.5.2\jars
+org.postgresql#postgresql added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-2d91ec2c-c431-46bf-86c1-5962cb67243e;1.0
+	confs: [default]
+	found org.postgresql#postgresql;42.7.4 in central
+	found org.checkerframework#checker-qual;3.42.0 in central
+:: resolution report :: resolve 123ms :: artifacts dl 10ms
+	:: modules in use:
+	org.checkerframework#checker-qual;3.42.0 from central in [default]
+	org.postgresql#postgresql;42.7.4 from central in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   2   |   0   |   0   |   0   ||   2   |   0   |
+	---------------------------------------------------------------------
+:: retrieving :: org.apache.spark#spark-submit-parent-2d91ec2c-c431-46bf-86c1-5962cb67243e
+	confs: [default]
+	0 artifacts copied, 2 already retrieved (0kB/5ms)
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+C:\Program Files\Python313\Lib\site-packages\pyspark\testing\utils.py:127: FutureWarning: PySpark does not yet fully support pandas >= 3.0.0. Some features may not work correctly. It is recommended to use pandas < 3.0.0 for now.
+  require_minimum_pandas_version()
+26/11/04 12:47:10 WARN ResolveWriteToStream: spark.sql.adaptive.enabled is not supported in streaming DataFrames/Datasets and will be disabled.
+query started: id=2887773f-bc1c-4ad3-b679-05876c549e9a
+26/11/04 12:47:11 WARN MicroBatchExecution: Disabling AQE since AQE is not supported in stateful workloads.
+[Stage 0:>                                                          (0 + 1) / 1][Stage 0:===========================================================(1 + 0) / 1]26/11/04 12:47:19 WARN HDFSBackedStateStoreProvider StateStoreProviderId[ storeId=StateStoreId[ operatorId=0, partitionId=2, storeName=default ], queryRunId=c353987b-0073-4789-b613-2f114e436c75 ]: The state for version 44 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+26/11/04 12:47:19 WARN HDFSBackedStateStoreProvider StateStoreProviderId[ storeId=StateStoreId[ operatorId=0, partitionId=1, storeName=default ], queryRunId=c353987b-0073-4789-b613-2f114e436c75 ]: The state for version 44 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+26/11/04 12:47:19 WARN HDFSBackedStateStoreProvider StateStoreProviderId[ storeId=StateStoreId[ operatorId=0, partitionId=0, storeName=default ], queryRunId=c353987b-0073-4789-b613-2f114e436c75 ]: The state for version 44 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+26/11/04 12:47:19 WARN HDFSBackedStateStoreProvider StateStoreProviderId[ storeId=StateStoreId[ operatorId=0, partitionId=3, storeName=default ], queryRunId=c353987b-0073-4789-b613-2f114e436c75 ]: The state for version 44 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 1:>                                                          (0 + 4) / 4]                                                                                26/11/04 12:47:24 ERROR MicroBatchExecution: Query events_to_postgres [id = 2887773f-bc1c-4ad3-b679-05876c549e9a, runId = c353987b-0073-4789-b613-2f114e436c75] terminated with error
+org.apache.spark.sql.execution.streaming.sources.ForeachBatchUserFuncException: [FOREACH_BATCH_USER_FUNCTION_ERROR] An error occurred in the user provided function in foreach batch sink. Reason: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+  File "C:\Program Files\Python313\Lib\site-packages\py4j\clientserver.py", line 644, in _call_proxy
+    return_value = getattr(self.pool[obj_id], method)(*params)
+  File "C:\Program Files\Python313\Lib\site-packages\pyspark\sql\utils.py", line 166, in call
+    raise e
+  File "C:\Program Files\Python313\Lib\site-packages\pyspark\sql\utils.py", line 163, in call
+    self.func(DataFrame(jdf, wrapped_session_jdf), batch_id)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Workstation\Amalitech\Week-5\Real-Time-Data-Ingestion\spark_streaming_to_postgres.py", line 121, in write_batch
+    with psycopg2.connect(**PG) as conn, conn.cursor() as cur:
+         ~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\User\AppData\Roaming\Python\Python313\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5499 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5499 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+ SQLSTATE: 39000
+	at org.apache.spark.sql.execution.streaming.sources.ForeachBatchSink.callBatchWriter(ForeachBatchSink.scala:60)
+	at org.apache.spark.sql.execution.streaming.sources.ForeachBatchSink.addBatch(ForeachBatchSink.scala:49)
+	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runBatch$19(MicroBatchExecution.scala:1418)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$8(SQLExecution.scala:228)
+	at org.apache.spark.sql.execution.SQLExecution$.withSessionTagsApplied(SQLExecution.scala:352)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$7(SQLExecution.scala:189)
+	at org.apache.spark.JobArtifactSet$.withActiveJobArtifactState(JobArtifactSet.scala:94)
+	at org.apache.spark.sql.artifact.ArtifactManager.$anonfun$withResources$1(ArtifactManager.scala:112)
+	at org.apache.spark.sql.artifact.ArtifactManager.withClassLoaderIfNeeded(ArtifactManager.scala:106)
+	at org.apache.spark.sql.artifact.ArtifactManager.withResources(ArtifactManager.scala:111)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$6(SQLExecution.scala:189)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:375)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$1(SQLExecution.scala:188)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:810)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId0(SQLExecution.scala:130)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:317)
+	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runBatch$18(MicroBatchExecution.scala:1409)
+	at org.apache.spark.sql.execution.streaming.runtime.ProgressContext.reportTimeTaken(ProgressReporter.scala:200)
+	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.runBatch(MicroBatchExecution.scala:1409)
+	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$executeOneBatch$2(MicroBatchExecution.scala:771)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at org.apache.spark.sql.execution.streaming.runtime.ProgressContext.reportTimeTaken(ProgressReporter.scala:200)
+	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.executeOneBatch(MicroBatchExecution.scala:736)
+	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runActivatedStream$1(MicroBatchExecution.scala:716)
+	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runActivatedStream$1$adapted(MicroBatchExecution.scala:716)
+	at org.apache.spark.sql.execution.streaming.runtime.TriggerExecutor.runOneBatch(TriggerExecutor.scala:40)
+	at org.apache.spark.sql.execution.streaming.runtime.TriggerExecutor.runOneBatch$(TriggerExecutor.scala:38)
+	at org.apache.spark.sql.execution.streaming.runtime.ProcessingTimeExecutor.runOneBatch(TriggerExecutor.scala:71)
+	at org.apache.spark.sql.execution.streaming.runtime.ProcessingTimeExecutor.execute(TriggerExecutor.scala:83)
+	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.runActivatedStream(MicroBatchExecution.scala:716)
+	at org.apache.spark.sql.execution.streaming.runtime.StreamExecution.$anonfun$runStream$1(StreamExecution.scala:357)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:810)
+	at org.apache.spark.sql.execution.streaming.runtime.StreamExecution.org$apache$spark$sql$execution$streaming$runtime$StreamExecution$$runStream(StreamExecution.scala:313)
+	at org.apache.spark.sql.execution.streaming.runtime.StreamExecution$$anon$1.run(StreamExecution.scala:236)
+Caused by: py4j.Py4JException: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+  File "C:\Program Files\Python313\Lib\site-packages\py4j\clientserver.py", line 644, in _call_proxy
+    return_value = getattr(self.pool[obj_id], method)(*params)
+  File "C:\Program Files\Python313\Lib\site-packages\pyspark\sql\utils.py", line 166, in call
+    raise e
+  File "C:\Program Files\Python313\Lib\site-packages\pyspark\sql\utils.py", line 163, in call
+    self.func(DataFrame(jdf, wrapped_session_jdf), batch_id)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Workstation\Amalitech\Week-5\Real-Time-Data-Ingestion\spark_streaming_to_postgres.py", line 121, in write_batch
+    with psycopg2.connect(**PG) as conn, conn.cursor() as cur:
+         ~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\User\AppData\Roaming\Python\Python313\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5499 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5499 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+	at py4j.Protocol.getReturnValue(Protocol.java:476)
+	at py4j.reflection.PythonProxyHandler.invoke(PythonProxyHandler.java:108)
+	at jdk.proxy3/jdk.proxy3.$Proxy59.call(Unknown Source)
+	at org.apache.spark.sql.execution.streaming.sources.PythonForeachBatchHelper$.$anonfun$callForeachBatch$1(ForeachBatchSink.scala:87)
+	at org.apache.spark.sql.execution.streaming.sources.PythonForeachBatchHelper$.$anonfun$callForeachBatch$1$adapted(ForeachBatchSink.scala:87)
+	at org.apache.spark.sql.execution.streaming.sources.ForeachBatchSink.callBatchWriter(ForeachBatchSink.scala:56)
+	... 34 more
+watching data/incoming every 5 seconds, up to 1 file(s) per batch
+query stopped: exception=py4j.Py4JException: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+  File "C:\Program Files\Python313\Lib\site-packages\py4j\clientserver.py", line 644, in _call_proxy
+    return_value = getattr(self.pool[obj_id], method)(*params)
+  File "C:\Program Files\Python313\Lib\site-packages\pyspark\sql\utils.py", line 166, in call
+    raise e
+  File "C:\Program Files\Python313\Lib\site-packages\pyspark\sql\utils.py", line 163, in call
+    self.func(DataFrame(jdf, wrapped_session_jdf), batch_id)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Workstation\Amalitech\Week-5\Real-Time-Data-Ingestion\spark_streaming_to_postgres.py", line 121, in write_batch
+    with psycopg2.connect(**PG) as conn, conn.cursor() as cur:
+         ~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\User\AppData\Roaming\Python\Python313\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5499 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5499 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+	at py4j.Protocol.getReturnValue(Protocol.java:476)
+	at py4j.reflection.PythonProxyHandler.invoke(PythonProxyHandler.java:108)
+	at jdk.proxy3/jdk.proxy3.$Proxy59.call(Unknown Source)
+	at org.apache.spark.sql.execution.streaming.sources.PythonForeachBatchHelper$.$anonfun$callForeachBatch$1(ForeachBatchSink.scala:87)
+	at org.apache.spark.sql.execution.streaming.sources.PythonForeachBatchHelper$.$anonfun$callForeachBatch$1$adapted(ForeachBatchSink.scala:87)
+	at org.apache.spark.sql.execution.streaming.sources.ForeachBatchSink.callBatchWriter(ForeachBatchSink.scala:56)
+	at org.apache.spark.sql.execution.streaming.sources.ForeachBatchSink.addBatch(ForeachBatchSink.scala:49)
+	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runBatch$19(MicroBatchExecution.scala:1418)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$8(SQLExecution.scala:228)
+	at org.apache.spark.sql.execution.SQLExecution$.withSessionTagsApplied(SQLExecution.scala:352)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$7(SQLExecution.scala:189)
+	at org.apache.spark.JobArtifactSet$.withActiveJobArtifactState(JobArtifactSet.scala:94)
+	at org.apache.spark.sql.artifact.ArtifactManager.$anonfun$withResources$1(ArtifactManager.scala:112)
+	at org.apache.spark.sql.artifact.ArtifactManager.withClassLoaderIfNeeded(ArtifactManager.scala:106)
+	at org.apache.spark.sql.artifact.ArtifactManager.withResources(ArtifactManager.scala:111)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$6(SQLExecution.scala:189)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:375)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$1(SQLExecution.scala:188)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:810)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId0(SQLExecution.scala:130)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:317)
+	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runBatch$18(MicroBatchExecution.scala:1409)
+	at org.apache.spark.sql.execution.streaming.runtime.ProgressContext.reportTimeTaken(ProgressReporter.scala:200)
+	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.runBatch(MicroBatchExecution.scala:1409)
+	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$executeOneBatch$2(MicroBatchExecution.scala:771)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at org.apache.spark.sql.execution.streaming.runtime.ProgressContext.reportTimeTaken(ProgressReporter.scala:200)
+	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.executeOneBatch(MicroBatchExecution.scala:736)
+	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runActivatedStream$1(MicroBatchExecution.scala:716)
+	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runActivatedStream$1$adapted(MicroBatchExecution.scala:716)
+	at org.apache.spark.sql.execution.streaming.runtime.TriggerExecutor.runOneBatch(TriggerExecutor.scala:40)
+	at org.apache.spark.sql.execution.streaming.runtime.TriggerExecutor.runOneBatch$(TriggerExecutor.scala:38)
+	at org.apache.spark.sql.execution.streaming.runtime.ProcessingTimeExecutor.runOneBatch(TriggerExecutor.scala:71)
+	at org.apache.spark.sql.execution.streaming.runtime.ProcessingTimeExecutor.execute(TriggerExecutor.scala:83)
+	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.runActivatedStream(MicroBatchExecution.scala:716)
+	at org.apache.spark.sql.execution.streaming.runtime.StreamExecution.$anonfun$runStream$1(StreamExecution.scala:357)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:810)
+	at org.apache.spark.sql.execution.streaming.runtime.StreamExecution.org$apache$spark$sql$execution$streaming$runtime$StreamExecution$$runStream(StreamExecution.scala:313)
+	at org.apache.spark.sql.execution.streaming.runtime.StreamExecution$$anon$1.run(StreamExecution.scala:236)
+
+Traceback (most recent call last):
+  File "C:\Workstation\Amalitech\Week-5\Real-Time-Data-Ingestion\spark_streaming_to_postgres.py", line 201, in <module>
+    main()
+    ~~~~^^
+  File "C:\Workstation\Amalitech\Week-5\Real-Time-Data-Ingestion\spark_streaming_to_postgres.py", line 191, in main
+    query.awaitTermination(args.run_seconds)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\site-packages\pyspark\sql\streaming\query.py", line 225, in awaitTermination
+    return self._jsq.awaitTermination(int(timeout * 1000))
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\site-packages\py4j\java_gateway.py", line 1362, in __call__
+    return_value = get_return_value(
+        answer, self.gateway_client, self.target_id, self.name)
+  File "C:\Program Files\Python313\Lib\site-packages\pyspark\errors\exceptions\captured.py", line 262, in deco
+    raise converted from None
+  File "C:\Program Files\Python313\Lib\site-packages\py4j\clientserver.py", line 644, in _call_proxy
+    return_value = getattr(self.pool[obj_id], method)(*params)
+    ^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\site-packages\pyspark\sql\utils.py", line 166, in call
+    raise e
+  File "C:\Program Files\Python313\Lib\site-packages\pyspark\sql\utils.py", line 163, in call
+    self.func(DataFrame(jdf, wrapped_session_jdf), batch_id)
+    ^^^^^^^^^^^
+  File "C:\Workstation\Amalitech\Week-5\Real-Time-Data-Ingestion\spark_streaming_to_postgres.py", line 121, in write_batch
+    with psycopg2.connect(**PG) as conn, conn.cursor() as cur:
+      ^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Roaming\Python\Python313\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+      ^^^^^^^^^^^^^^^^^
+pyspark.errors.exceptions.captured.StreamingQueryException: [STREAM_FAILED] Query [id = 2887773f-bc1c-4ad3-b679-05876c549e9a, runId = c353987b-0073-4789-b613-2f114e436c75] terminated with exception: [FOREACH_BATCH_USER_FUNCTION_ERROR] An error occurred in the user provided function in foreach batch sink. Reason: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+  File "C:\Program Files\Python313\Lib\site-packages\py4j\clientserver.py", line 644, in _call_proxy
+    return_value = getattr(self.pool[obj_id], method)(*params)
+  File "C:\Program Files\Python313\Lib\site-packages\pyspark\sql\utils.py", line 166, in call
+    raise e
+  File "C:\Program Files\Python313\Lib\site-packages\pyspark\sql\utils.py", line 163, in call
+    self.func(DataFrame(jdf, wrapped_session_jdf), batch_id)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Workstation\Amalitech\Week-5\Real-Time-Data-Ingestion\spark_streaming_to_postgres.py", line 121, in write_batch
+    with psycopg2.connect(**PG) as conn, conn.cursor() as cur:
+         ~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\User\AppData\Roaming\Python\Python313\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5499 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5499 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+ SQLSTATE: 39000 SQLSTATE: XXKST
+=== Streaming Query ===
+Identifier: events_to_postgres [id = 2887773f-bc1c-4ad3-b679-05876c549e9a, runId = c353987b-0073-4789-b613-2f114e436c75]
+Current Committed Offsets: {FileStreamSource[file:/C:/Workstation/Amalitech/Week-5/Real-Time-Data-Ingestion/data/incoming]: {"logOffset":40}}
+Current Available Offsets: {FileStreamSource[file:/C:/Workstation/Amalitech/Week-5/Real-Time-Data-Ingestion/data/incoming]: {"logOffset":41}}
+
+Current State: ACTIVE
+Thread State: RUNNABLE
+
+Logical Plan:
+~WriteToMicroBatchDataSourceV1 ForeachBatchSink, 2887773f-bc1c-4ad3-b679-05876c549e9a, [queryName=events_to_postgres, checkpointLocation=checkpoint/events], Append
++- ~Deduplicate [event_id#0, event_time#10-T600000ms]
+   +- ~EventTimeWatermark c6c5511e-6139-48f3-b70e-d672d13be2c3, event_time#10: timestamp, 10 minutes
+      +- ~Filter ((((((isnotnull(event_id#0) AND isnotnull(event_time#10)) AND (user_id#11 > 0)) AND (product_id#12 > 0)) AND event_type#15 IN (view,add_to_cart,purchase)) AND (price#13 >= cast(cast(0 as decimal(1,0)) as decimal(10,2)))) AND (isnull(quantity#14) OR (quantity#14 >= 0)))
+         +- ~Project [event_id#0, event_time#10, user_id#11, session_id#3, event_type#15, product_id#12, lower(trim(category#6, None)) AS category#16, price#13, quantity#14]
+            +- ~Project [event_id#0, event_time#10, user_id#11, session_id#3, lower(trim(event_type#4, None)) AS event_type#15, product_id#12, category#6, price#13, quantity#14]
+               +- ~Project [event_id#0, event_time#10, user_id#11, session_id#3, event_type#4, product_id#12, category#6, price#13, try_cast(quantity#8 as int) AS quantity#14]
+                  +- ~Project [event_id#0, event_time#10, user_id#11, session_id#3, event_type#4, product_id#12, category#6, try_cast(price#7 as decimal(10,2)) AS price#13, quantity#8]
+                     +- ~Project [event_id#0, event_time#10, user_id#11, session_id#3, event_type#4, try_cast(product_id#5 as int) AS product_id#12, category#6, price#7, quantity#8]
+                        +- ~Project [event_id#0, event_time#10, try_cast(user_id#2 as int) AS user_id#11, session_id#3, event_type#4, product_id#5, category#6, price#7, quantity#8]
+                           +- ~Project [event_id#0, try_to_timestamp(event_time#1, Some(yyyy-MM-dd HH:mm:ss.SSS), TimestampType, Some(UTC), false) AS event_time#10, user_id#2, session_id#3, event_type#4, product_id#5, category#6, price#7, quantity#8]
+                              +- ~StreamingExecutionRelation FileStreamSource[file:/C:/Workstation/Amalitech/Week-5/Real-Time-Data-Ingestion/data/incoming], [event_id#0, event_time#1, user_id#2, session_id#3, event_type#4, product_id#5, category#6, price#7, quantity#8], name=<Unassigned>
+
+26/11/04 12:47:25 WARN SparkEnv: Exception while deleting Spark temp dir: C:\Users\User\AppData\Local\Temp\spark-1937c287-c7e2-4dcb-ac79-c860308ce0a4\userFiles-d9fa38a8-eaf8-44cc-ad23-796e0dd4bf03
+java.io.IOException: Failed to delete: C:\Users\User\AppData\Local\Temp\spark-1937c287-c7e2-4dcb-ac79-c860308ce0a4\userFiles-d9fa38a8-eaf8-44cc-ad23-796e0dd4bf03\org.postgresql_postgresql-42.7.4.jar
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:310)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:279)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:293)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:279)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:250)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively(SparkFileUtils.scala:173)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively$(SparkFileUtils.scala:172)
+	at org.apache.spark.util.Utils$.deleteRecursively(Utils.scala:1062)
+	at org.apache.spark.SparkEnv.stop(SparkEnv.scala:299)
+	at org.apache.spark.SparkContext.$anonfun$stop$25(SparkContext.scala:2409)
+	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1314)
+	at org.apache.spark.SparkContext.stop(SparkContext.scala:2409)
+	at org.apache.spark.SparkContext.stop(SparkContext.scala:2311)
+	at org.apache.spark.SparkContext.$anonfun$new$37(SparkContext.scala:715)
+	at org.apache.spark.util.SparkShutdownHook.run(ShutdownHookManager.scala:231)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$2(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:1963)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$1(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.SparkShutdownHookManager.runAll(ShutdownHookManager.scala:205)
+	at org.apache.spark.util.SparkShutdownHookManager$$anon$2.run(ShutdownHookManager.scala:184)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+26/11/04 12:47:25 ERROR ShutdownHookManager: Exception while deleting Spark temp dir: C:\Users\User\AppData\Local\Temp\spark-1937c287-c7e2-4dcb-ac79-c860308ce0a4
+java.io.IOException: Failed to delete: C:\Users\User\AppData\Local\Temp\spark-1937c287-c7e2-4dcb-ac79-c860308ce0a4\userFiles-d9fa38a8-eaf8-44cc-ad23-796e0dd4bf03\org.postgresql_postgresql-42.7.4.jar
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:310)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:279)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:293)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:279)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:293)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:279)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:250)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively(SparkFileUtils.scala:173)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively$(SparkFileUtils.scala:172)
+	at org.apache.spark.util.Utils$.deleteRecursively(Utils.scala:1062)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4(ShutdownHookManager.scala:70)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4$adapted(ShutdownHookManager.scala:67)
+	at scala.collection.ArrayOps$.foreach$extension(ArrayOps.scala:1324)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$2(ShutdownHookManager.scala:67)
+	at org.apache.spark.util.SparkShutdownHook.run(ShutdownHookManager.scala:231)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$2(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:1963)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$1(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.SparkShutdownHookManager.runAll(ShutdownHookManager.scala:205)
+	at org.apache.spark.util.SparkShutdownHookManager$$anon$2.run(ShutdownHookManager.scala:184)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+26/11/04 12:47:25 ERROR ShutdownHookManager: Exception while deleting Spark temp dir: C:\Users\User\AppData\Local\Temp\spark-1937c287-c7e2-4dcb-ac79-c860308ce0a4\userFiles-d9fa38a8-eaf8-44cc-ad23-796e0dd4bf03
+java.io.IOException: Failed to delete: C:\Users\User\AppData\Local\Temp\spark-1937c287-c7e2-4dcb-ac79-c860308ce0a4\userFiles-d9fa38a8-eaf8-44cc-ad23-796e0dd4bf03\org.postgresql_postgresql-42.7.4.jar
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:310)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:279)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:293)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:279)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:250)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively(SparkFileUtils.scala:173)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively$(SparkFileUtils.scala:172)
+	at org.apache.spark.util.Utils$.deleteRecursively(Utils.scala:1062)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4(ShutdownHookManager.scala:70)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4$adapted(ShutdownHookManager.scala:67)
+	at scala.collection.ArrayOps$.foreach$extension(ArrayOps.scala:1324)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$2(ShutdownHookManager.scala:67)
+	at org.apache.spark.util.SparkShutdownHook.run(ShutdownHookManager.scala:231)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$2(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:1963)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$1(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.SparkShutdownHookManager.runAll(ShutdownHookManager.scala:205)
+	at org.apache.spark.util.SparkShutdownHookManager$$anon$2.run(ShutdownHookManager.scala:184)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+SUCCESS: The process with PID 9012 (child process of PID 32252) has been terminated.
+SUCCESS: The process with PID 32252 (child process of PID 5448) has been terminated.
+SUCCESS: The process with PID 5448 (child process of PID 38412) has been terminated.
